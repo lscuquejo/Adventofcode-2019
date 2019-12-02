@@ -107,7 +107,7 @@ class FuelCalculator
         82734,
     );
 
-    public function echoResults()
+    public function __construct()
     {
         $this->executeForAllModules();
     }
@@ -122,7 +122,8 @@ class FuelCalculator
             $moduleMass = $this->subtract($moduleMass)."\n";
             $result[] = $moduleMass;
         }
-        $neededFuel = array_sum ($result);
+        $neededFuel = $this->sumArray($result);
+
         echo "the final result is = " . $neededFuel;
     }
 
@@ -148,8 +149,13 @@ class FuelCalculator
         }
         return 0;
     }
+
+    private function sumArray($result){
+        if (isset($result)) {
+            return array_sum ($result);
+        }
+        return 0;
+    }
 }
 
-$fuelCalculator = new FuelCalculator();
-
-$fuelCalculator->echoResults();
+new FuelCalculator();
