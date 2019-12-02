@@ -8,7 +8,6 @@ namespace Day\One\Part;
  */
 class FuelCalculator
 {
-
     /**
      * @var DataHolder
      */
@@ -27,22 +26,6 @@ class FuelCalculator
     {
         $this->dataHolder = $dataHolder;
         $this->executeForAllModules();
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getNeededFuel()
-    {
-        return $this->neededFuel;
-    }
-
-    /**
-     * @param mixed $neededFuel
-     */
-    public function setNeededFuel($neededFuel): void
-    {
-        $this->neededFuel = $neededFuel;
     }
 
     /**
@@ -116,5 +99,21 @@ class FuelCalculator
         }
 
         return null;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getNeededFuel()
+    {
+        return $this->neededFuel;
+    }
+
+    /**
+     * @param mixed $neededFuel
+     */
+    public function setNeededFuel($neededFuel): void
+    {
+        $this->neededFuel = $neededFuel;
     }
 }
