@@ -3,8 +3,6 @@
 class FuelCalculator
 {
     private $modulesMasses = array(
-        14,
-        21,
         1969,
     );
 
@@ -16,29 +14,18 @@ class FuelCalculator
     private function executeForAllModules()
     {
         $result = array();
-        $totalFuelPerModule = array();
 
         foreach ($this->modulesMasses as $moduleMass) {
-            $moduleMass = $this->divide($moduleMass);
-            $moduleMass = $this->roundDown($moduleMass);
-            $moduleMass = $this->subtract($moduleMass);
-
-            $result[] = $moduleMass;
-
             while ($moduleMass > 8){
                 $moduleMass = $this->divide($moduleMass);
                 $moduleMass = $this->roundDown($moduleMass);
                 $moduleMass = $this->subtract($moduleMass);
 
-                echo $totalFuelPerModule[] = $moduleMass;
+                $result[] = $moduleMass;
             }
-            $usedFuelInThisModule = array_sum($totalFuelPerModule);
-            echo $usedFuelInThisModule."\n";
         }
-
-        $neededFuel = array_sum ($result);
-        $totalFuel = $neededFuel + $usedFuelInThisModule;
-        echo "the final result is = " . $totalFuel;
+        $neededFuel = array_sum($result);
+        echo $neededFuel;
     }
 
     private function divide($mass){
