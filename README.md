@@ -1,3 +1,3 @@
-# Adventofcode-2019
+# AdventOfCode-2019
 
-![Alt text](gitImgs/AdventOfCode.jpeg?raw=true "Title")
+![Alt text](gitImgs/Aoc.png?raw=true "Title")
