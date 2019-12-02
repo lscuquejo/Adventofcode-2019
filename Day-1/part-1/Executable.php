@@ -5,4 +5,6 @@ namespace Day\One\Part;
 require "DataHolder.php";
 require "FuelCalculator.php";
 
-new FuelCalculator(new DataHolder());
+$fuelCalculator = new FuelCalculator(new DataHolder());
+
+echo "the final result is = " . $fuelCalculator->getNeededFuel();

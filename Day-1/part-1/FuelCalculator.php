@@ -2,17 +2,53 @@
 
 namespace Day\One\Part;
 
+/**
+ * Class FuelCalculator
+ * @package Day\One\Part
+ */
 class FuelCalculator
 {
+
+    /**
+     * @var DataHolder
+     */
     private $dataHolder;
 
+    /**
+     * @var $neededFuel;
+     */
+    private $neededFuel;
+
+    /**
+     * FuelCalculator constructor.
+     * @param DataHolder $dataHolder
+     */
     public function __construct(DataHolder $dataHolder)
     {
         $this->dataHolder = $dataHolder;
         $this->executeForAllModules();
     }
 
-    private function executeForAllModules()
+    /**
+     * @return mixed
+     */
+    public function getNeededFuel()
+    {
+        return $this->neededFuel;
+    }
+
+    /**
+     * @param mixed $neededFuel
+     */
+    public function setNeededFuel($neededFuel): void
+    {
+        $this->neededFuel = $neededFuel;
+    }
+
+    /**
+     * @return void
+     */
+    private function executeForAllModules(): void
     {
         $result = array();
 
@@ -24,36 +60,61 @@ class FuelCalculator
         }
         $neededFuel = $this->sumArray($result);
 
-        echo "the final result is = " . $neededFuel;
+        $this->setNeededFuel($neededFuel);
     }
 
-    private function divide($mass){
+
+    /**
+     * @param int $mass
+     * @return int
+     */
+    private function divide(int $mass): int
+    {
         if (isset($mass)) {
             $dividedMass = $mass/3;
             return $dividedMass;
         }
-        return 0;
+
+        return null;
     }
 
-    private function roundDown($mass){
+    /**
+     * @param int $mass
+     * @return int
+     */
+    private function roundDown(int $mass): int
+    {
         if (isset($mass)) {
             return floor($mass);
         }
-        return 0;
+
+        return null;
     }
 
-    private function subtract($mass){
+    /**
+     * @param int $mass
+     * @return int
+     */
+    private function subtract(int $mass): int
+    {
         if (isset($mass)) {
             $mass = $mass - 2;
             return $mass;
         }
-        return 0;
+
+        return null;
     }
 
-    private function sumArray($result){
+    /**
+     * @param array $result
+     * @return int
+     */
+    private function sumArray(array $result): int
+    {
         if (isset($result)) {
             return array_sum ($result);
         }
-        return 0;
+
+        return null;
     }
 }
