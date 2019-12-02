@@ -1,5 +1,7 @@
 <?php
 
+namespace Day\One\Part;
+
 class FuelCalculator
 {
     private $modulesMasses = array(
