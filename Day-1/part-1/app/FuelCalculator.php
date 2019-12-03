@@ -1,6 +1,6 @@
 <?php
 
-namespace Day\One\Part;
+namespace App\Day\One\Part;
 
 /**
  * Class FuelCalculator
