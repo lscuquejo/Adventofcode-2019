@@ -9,39 +9,10 @@ class intCodeProgram
         2,127,6,131,1,131,2,135,1,10,135,0,99,2,0,14,0
     );
 
-
-    private $finalIntCode = array();
-
-//    public function __construct()
-//    {
-//        $position = 0;
-//        if ($this->intCode[$position] = 1) {
-//            $this->finalIntCode[$position] = 0;
-//            $this->finalIntCode[$position] = $this->intCode[$position];
-//            var_dump($this->finalIntCode);
-//            $position = $position + 1;
-//            echo $position."\n";
-//            $firstParameter = $this->intCode[$position];
-//            $firstParameterValue = $this->intCode[$firstParameter];
-//            echo $firstParameterValue."\n";
-//            $position = $position + 1;
-//            $secondParameter = $this->intCode[$position];
-//            $secondParameterValue = $this->intCode[$secondParameter];
-//            echo $secondParameterValue."\n";
-//            $position = $position + 1;
-//            $thirdParameterNewValue = $firstParameterValue + $secondParameterValue;
-//            echo $this->intCode[$position] = $thirdParameterNewValue."\n";
-//        }
-//    }
-
     public function __construct()
     {
         $this->execute();
     }
-
-//    private $intCode = array(
-//        1,0,0,0,99
-//    );
 
     private $position;
 
@@ -72,16 +43,17 @@ class intCodeProgram
 
                 $getThirdParameter = $this->intCode[$this->position];
 
-                //sum both positions values.
-                $sumResult = $this->intCode[$getFirstParameter] + $this->intCode[$getSecondParameter];
-
-                // replace array with values.
-                $this->intCode[$getThirdParameter] = $sumResult;
+                // replace array with summed value
+                $this->intCode[$getThirdParameter] = $this->
+                    sum(
+                        $this->intCode[$getFirstParameter],
+                        $this->intCode[$getSecondParameter]
+                    );
 
                 $this->position = $this->position + 1;
             }
 
-            if ($this->intCode[$this->position] == self::MULTIPLY   ) {
+            if ($this->intCode[$this->position] == self::MULTIPLY) {
                 // equals 1
                 $this->position = $this->position + 1;
 
@@ -111,8 +83,9 @@ class intCodeProgram
         var_dump($this->intCode);
     }
 
-    private function add()
+    private function sum($firstParameter, $secondParameter)
     {
+        return $firstParameter + $secondParameter;
     }
 }
 
