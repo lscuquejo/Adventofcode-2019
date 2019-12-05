@@ -22,23 +22,22 @@ class FuelCalculator
      * FuelCalculator constructor.
      * @param DataHolder $dataHolder
      */
-    public function __construct(DataHolder $dataHolder)
+    public function __construct(DataHolder $dataHolder = null)
     {
         $this->dataHolder = $dataHolder;
-        $this->executeForAllModules();
     }
 
     /**
      * @return void
      */
-    private function executeForAllModules(): void
+    public function executeForAllModules(): void
     {
         $result = array();
 
         foreach ($this->dataHolder->getModulesMasses() as $moduleMass) {
             $moduleMass = $this->divide($moduleMass);
             $moduleMass = $this->roundDown($moduleMass);
-            $moduleMass = $this->subtract($moduleMass)."\n";
+            $moduleMass = $this->subtract($moduleMass);
             $result[] = $moduleMass;
         }
         $neededFuel = $this->sumArray($result);
@@ -51,7 +50,7 @@ class FuelCalculator
      * @param int $mass
      * @return int
      */
-    private function divide(int $mass): int
+    public function divide(int $mass): int
     {
         if (isset($mass)) {
             $dividedMass = $mass/3;
@@ -65,7 +64,7 @@ class FuelCalculator
      * @param int $mass
      * @return int
      */
-    private function roundDown(int $mass): int
+    public function roundDown(int $mass): int
     {
         if (isset($mass)) {
             return floor($mass);
@@ -78,7 +77,7 @@ class FuelCalculator
      * @param int $mass
      * @return int
      */
-    private function subtract(int $mass): int
+    public function subtract(int $mass): int
     {
         if (isset($mass)) {
             $mass = $mass - 2;
@@ -92,7 +91,7 @@ class FuelCalculator
      * @param array $result
      * @return int
      */
-    private function sumArray(array $result): int
+    public function sumArray(array $result): int
     {
         if (isset($result)) {
             return array_sum ($result);
