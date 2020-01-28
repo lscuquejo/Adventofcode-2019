@@ -4,7 +4,9 @@ namespace parttwo;
 
 class intCodeProgram
 {
-    private $intCode = array(
+    private $intCode;
+
+    private $machine = array(
         1,0,0,3,1,1,2,3,1,3,4,3,1,5,0,3,2,10,1,19,1,6,19,23,1,23,13,27,2,6,27,31,1,5,31,35,2,10,35,39,1,6,39,43,1,13,43,
         47,2,47,6,51,1,51,5,55,1,55,6,59,2,59,10,63,1,63,6,67,2,67,10,71,1,71,9,75,2,75,10,79,1,79, 5,83,2,10,83,87,1,87
         ,6,91,2,9,91,95,1,95,5,99,1,5,99,103,1,103,10,107,1,9,107,111,1,6,111,115,1,115,5,119,1,10, 119,123,2,6,123,127,
@@ -21,26 +23,18 @@ class intCodeProgram
 
     public function execute()
     {
-        while ($this->finalResult < 19690720) {
+        while ($this->getFinalResult() < 19690721) {
+    //            while ($this->intCode['1'] < 99) {
+                // + 1
 
-            while ($this->intCode['1'] < 99) {
-                while ($this->intCode['2'] < 99) {
-                    $this->position = 0;
+        for ($a=0; $a<=100; $a++) {
 
-                    while ($this->intCode[$this->position] !== self::END) {
-                        if ($this->intCode[$this->position] == self::SUM) {
-                            $this->sumIntCodeExecute();
-                        } elseif ($this->intCode[$this->position] == self::MULTIPLY) {
-                            $this->multiplyIntCodeExecute();
-                        }
-                    }
+            for ($i=0; $i<=100; $i++) {
+                $this->intCode = $this->machine;
 
-                    $this->setFinalResult($this->intCode[0]);
+                $this->intCode['2'] = $i;
+                $this->intCode['1'] = $a;
 
-                    $this->intCode['2'] = $this->intCode['2'] + 1;
-                    var_dump($this->finalResult);
-
-                }
                 $this->position = 0;
 
                 while ($this->intCode[$this->position] !== self::END) {
@@ -53,15 +47,26 @@ class intCodeProgram
 
                 $this->setFinalResult($this->intCode[0]);
 
-                $this->intCode['1'] = $this->intCode['1'] + 1;
-                var_dump($this->finalResult);
-
+                var_dump($this->getFinalResult());
             }
-            var_dump($this->finalResult);
-//            var_dump($this->finalResult);
-//            var_dump($this->finalResult);die();
         }
-//        var_dump($this->intCode);
+                //                $this->position = 0;
+//
+//                while ($this->intCode[$this->position] !== self::END) {
+//                    if ($this->intCode[$this->position] == self::SUM) {
+//                        $this->sumIntCodeExecute();
+//                    } elseif ($this->intCode[$this->position] == self::MULTIPLY) {
+//                        $this->multiplyIntCodeExecute();
+//                    }
+//                }
+//
+//                $this->setFinalResult($this->intCode[0]);
+//
+//                $this->intCode['1'] = $this->intCode['1'] + 1;
+//
+//                var_dump($this->finalResult);
+//            }
+        }
     }
 
     private function sumArrayValues($firstParameter, $secondParameter)
